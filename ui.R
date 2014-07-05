@@ -35,7 +35,7 @@ shinyUI(
             dataTableOutput(outputId = "table")
         ),
         fluidRow(
-            span(paste("Data updated", format(file.info(".RData")$ctime, "%F")))
+            span(paste("Data updated", format(file.info("ga.rds")$ctime, "%F")))
         )
     )
 )
