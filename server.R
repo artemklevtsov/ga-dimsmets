@@ -1,7 +1,5 @@
 library(shiny)
 
-ga <- readRDS("ga.rds")
-
 # Define a server for the Shiny app
 shinyServer(function(input, output) {
 

@@ -1,17 +1,15 @@
 library(shiny)
 
-ga <- readRDS("ga.rds")
-
 # Define the overall UI
 shinyUI(
     fluidPage(
         titlePanel("Google Analytics: Dimensions & Metrics"),
         absolutePanel(fixed = TRUE, draggable = TRUE, class = "modal",
                       top = "auto", left = "auto", right = 20, bottom = 20,
-                      width = 300,
+                      width = 300, height = 420,
                       wellPanel(
                           checkboxGroupInput(inputId = "columns", label = "Columns to show:",
-                                             names(ga), selected = c("group", "id", "uiName", "description", "type", "dataType", "status"))
+                                             names(ga), selected = c("id", "uiName", "type", "description"))
                       )
         ),
         fluidRow(
