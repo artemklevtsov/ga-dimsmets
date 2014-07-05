@@ -1,0 +1,7 @@
+Title: Google Analytics APi dimensions and metrics
+Description: Lists all columns for a Google Analytics core report type
+Author: Artem Klevtsov
+DisplayMode: normal
+License: GPL-2
+Type: Shiny
+Tags: datatables absolutepanel
