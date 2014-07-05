@@ -20,4 +20,4 @@ ga <- cbind(id, attributes, stringsAsFactors = FALSE)
 # Get data file path
 data_file <- file.path("data/ga.rda")
 # Save data to file
-save(ga, file = ".RData", compress = "xz")
+saveRDS(ga, file = "ga.rds", compress = "xz")

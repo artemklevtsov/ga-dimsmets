@@ -1,5 +1,7 @@
 library(shiny)
 
+ga <- readRDS("ga.rds")
+
 # Define the overall UI
 shinyUI(
     fluidPage(

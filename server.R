@@ -1,24 +1,25 @@
 library(shiny)
 
+ga <- readRDS("ga.rds")
+
 # Define a server for the Shiny app
 shinyServer(function(input, output) {
 
-    # Filter data based on selections
+    # Filter ga based on selections
     output$table <- renderDataTable({
-        data <- ga
         if (input$group != "All") {
-            data <- data[data$group == input$group,]
+            ga <- ga[ga$group == input$group,]
         }
         if (input$type != "All") {
-            data <- data[data$type == input$type,]
+            ga <- ga[ga$type == input$type,]
         }
         if (input$status != "All") {
-            data <- data[data$status == input$status,]
+            ga <- ga[ga$status == input$status,]
         }
         if (input$allowedInSegments != "All") {
-            data <- data[data$allowedInSegments == input$allowedInSegments,]
+            ga <- ga[ga$allowedInSegments == input$allowedInSegments,]
         }
-        data[, input$columns, drop = FALSE]
+        ga[, input$columns, drop = FALSE]
     }, options = list(iDisplayLength = 10))
 
 })
