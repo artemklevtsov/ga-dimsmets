@@ -3,6 +3,7 @@ library(shiny)
 # Define the overall UI
 shinyUI(
     fluidPage(
+        tags$head(includeScript("google-analytics.js")),
         titlePanel("Google Analytics: Dimensions & Metrics"),
         absolutePanel(fixed = TRUE, draggable = TRUE, class = "modal",
                       top = "auto", left = "auto", right = 20, bottom = 20,
