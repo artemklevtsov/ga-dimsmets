@@ -1,5 +1,6 @@
 .Rproj.user
 .Rhistory
 .RData
-ga-dimsmets.Rproj
+*.Rproj
 shinyapps
+rsconnect
