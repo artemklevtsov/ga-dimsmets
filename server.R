@@ -1,23 +1,26 @@
 library(shiny)
 
-# Define a server for the Shiny app
 shinyServer(function(input, output) {
 
-    # Filter ga based on selections
-    output$table <- renderDataTable({
-        if (input$group != "All") {
+    output$table <- DT::renderDataTable({
+        if (input$group != "All")
             ga <- ga[ga$group == input$group,]
-        }
-        if (input$type != "All") {
+        if (input$type != "All")
             ga <- ga[ga$type == input$type,]
-        }
         if (input$status != "All") {
             ga <- ga[ga$status == input$status,]
         }
-        if (input$allowedInSegments != "All") {
-            ga <- ga[ga$allowedInSegments == input$allowedInSegments,]
-        }
-        ga[, input$columns, drop = FALSE]
-    }, options = list(iDisplayLength = 10))
-
+        if (input$segments != "All")
+            ga <- ga[ga$allowed.in.segments == input$segments,]
+        if (!is.null(input$columns))
+            selected <- c(selected, input$columns)
+        ga[, selected, drop = FALSE]
+    },
+        rownames = FALSE,
+        selection = "none", filter = "top", style = "bootstrap",
+        extensions = c("FixedHeader", "Responsive"),
+        options = list(
+            autoWidth = TRUE, paging = FALSE, searchHighlight = TRUE
+        )
+    )
 })
